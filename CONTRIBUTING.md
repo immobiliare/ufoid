@@ -1,144 +1,94 @@
-# Contributing
+# Contributing to UFOID
 
-This document describes how to work and contribute on this project.
+First off, thank you for considering contributing to UFOID! Your contributions help make this project better for everyone.
 
-- [Contributing](#contributing)
-  - [1 How to clone the project](#1-how-to-clone-the-project)
-  - [2 Requirements](#2-requirements)
-  - [3 Configuration](#3-configuration)
-  - [4 Installation](#4-installation)
-    - [4.1 `pyenv` usage (skip if the installed python version is the same required by the project)](#41-pyenv-usage-skip-if-the-installed-python-version-is-the-same-required-by-the-project)
-    - [4.2 Create virtualenv and install requirements](#42-create-virtualenv-and-install-requirements)
-  - [5 Run procedure](#5-run-procedure)
-  - [6 Test procedure](#6-test-procedure)
-  - [7 CI Structure](#7-ci-structure)
-    - [7.1 Runners](#71-runners)
-    - [7.2 Variables](#72-variables)
-    - [7.3 Test](#73-test)
-    - [7.4 Badges](#74-badges)
-  - [8 Code style and conventions](#8-code-style-and-conventions)
+## Table of Contents
 
-## 1 How to clone the project
+- [Getting Started](#getting-started)
+- [Submitting Issues](#submitting-issues)
+- [Pull Requests](#pull-requests)
+- [Coding Guidelines](#coding-guidelines)
+- [Running Tests](#running-tests)
 
-In order to get this project, execute the following command
+## Getting Started
 
-```console
-git clone https://github.com/immobiliare/ufoid.git
-```
+1. **Fork the repository**: Click the "Fork" button at the top right of the repository page.
+2. **Clone your fork**: Clone the forked repository to your local machine.
+   ```bash
+   git clone https://github.com/<your-username>/ufoid.git
+   cd ufoid
+   ```
+3. **Create a virtual environment and install dependencies**: Set up a virtual environment to install dependencies.
+   ```bash
+   make
+   source venv/bin/activate
+   ```
 
-## 2 Requirements
+## Submitting Issues
 
-This project requires the following technologies:
+If you encounter any bugs or have feature requests, please create an issue in the GitHub repository. When creating an issue, please include:
 
-- Python 3.9.2 (as shown in the `.python-version` file)
-- PIP + packages in `requirements.txt`
+- A clear and descriptive title.
+- A detailed description of the issue or request.
+- Steps to reproduce the issue (if applicable).
+- Any relevant logs, screenshots, or other information.
 
-You can try to install all requirements using the following command
+## Pull Requests
 
-```console
-make env
-```
+Before submitting a pull request, please ensure you have followed these steps:
 
-or if you have pyenv installed
+1. **Fork the repository** and **clone your fork** to your local machine.
+2. **Create a new branch** from the `main` branch.
+   ```bash
+   git checkout -b my-feature-branch
+   ```
+3. **Make your changes**: Implement your changes in the new branch.
+4. **Run tests**: Ensure all tests pass by running the test suite.
+5. **Commit your changes**: Write clear and concise commit messages.
+   ```bash
+   git add .
+   git commit -m "Add my new feature"
+   ```
+6. **Push to your fork**: Push your changes to your forked repository.
+   ```bash
+   git push origin my-feature-branch
+   ```
+7. **Open a pull request**: Go to the original repository and open a pull request. Please provide a detailed description of your changes and link any related issues.
 
-```console
-make env_pyenv
-```
+## Coding Guidelines
 
-## 3 Configuration
+To maintain code quality, please adhere to the following guidelines:
 
-`ufoid/config/config.yaml` allows you to customize various aspects of the duplicate detection process. Here are some key parameters you can modify:
+- Follow the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide for Python code.
+- Write clear and concise code with comments where necessary.
+- Keep the codebase DRY (Don't Repeat Yourself) and modular.
+- Ensure all new features are covered by tests.
+- Update documentation as needed when making changes.
 
-- `num_processes`: Number of processes for parallel execution.
-- `chunk_length`: The length of each chunk for chunk-based processing. See below for more information.
-- `new_paths`: List of directory paths containing the new dataset for duplicate detection (automatically recursive).
-- `old_paths`: List of directory paths containing the old dataset for comparison with the new dataset (automatically recursive).
-- `check_with_itself`: Boolean flag to indicate whether to check for duplicates within the new dataset.
-- `check_with_old_data`: Boolean flag to indicate whether to check for duplicates between the new and old datasets.
-- `txt_output`: Boolean flag to indicate whether to save duplicate information to the output file.
-- `txt_output_file`: Path to the output file where duplicate information will be saved.
-- `delete_duplicates`: Boolean flag to indicate whether to delete duplicate images from the dataset.
-- `create_folder_with_no_duplicates`: Boolean flag to indicate whether to create a folder with non-duplicate images.
-- `new_folder`: Path to the folder where non-duplicate images will be stored.
-- `distance_threshold`: The distance threshold for considering images as duplicates. 10 is optimal for our use case, since it allows to get all the exact duplicate (also with some resilience to minor manipulations on images, while avoiding collisions. See https://docs.google.com/document/d/16DS-Z-SHKtmTzQikxCO4SwRJU0cHS_-TVkf9UAKYRZA/edit#heading=h.uybo5cpys4eefor an extensive study on this.
+## Running Tests and lint
 
+Before submitting your pull request, ensure that all tests pass and that the code is linted:
 
-## 4 Installation
+1. **Activate the virtual environment**:
+   ```bash
+   source venv/bin/activate
+   ```
+2. **Run the tests** using pytest:
+   ```bash
+   pytest --cov
+   ```
+3. **Run the tests** using pytest:
+   ```bash
+   pre-commit run --all-files
+   ```
 
-In order to guarantee the proper operation of the application, the recommended python version is 3.9.2.
+Thank you for your contributions!
 
-### 4.1 `pyenv` usage (skip if the installed python version is the same required by the project)
+## Contact
 
-If the default python version on the system is different from the recommended one, you can install the required version using the `pyenv` tool available [here](https://github.com/pyenv/pyenv#installation).
-Once `pyenv` is installed, you can install the required python version executing
+If you have any questions or need further assistance, feel free to reach out to the maintainers.
 
-```console
-pyenv install 3.9.2
-```
+## Contributors
 
-and you can activate the recommended version for the current shell by
-
-```console
-pyenv shell 3.9.2
-```
-
-### 4.2 Create virtualenv and install requirements
-
-In order to create a clean environment for the execution of the application, a new virtualenv should be created inside the current folder, using the command
-
-```console
-python3 -m venv venv
-```
-
-A new folder named `venv` will be created in `.`
-
-In order to activate the virtualenv, execute
-
-```console
-source venv/bin/activate
-```
-
-and install python requirements executing
-
-```console
-pip install -r requirements.txt
-```
-A different approach consists in using the Makefile by running from the project root the command
-
-```console
-make
-```
-
-This operation will:
-
-- create the venv;
-- update pip to the latest version;
-- install the requirements;
-- install the git hook.
-
-## 5 Run procedure
-
-Start the script using the following command:
-
-```console
-python -m ufoid
-```
-
-## 6 Test procedure
-
-Inside the project you can find functional tests created to verify the correctness of implemented features.
-It is possible to start the execution of all `pytest` tests (unit + integration) running:
-
-```console
-pytest
-```
-
-In order to see the coverage for unit tests, execute
-
-```console
-pytest test/unit --cov
-```
-
-## 7 Code style and conventions
-
-This project makes use of the standard Python coding style: PEP-8
+- @EgonFerri
+- @lorenzomassimiani
