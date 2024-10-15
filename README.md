@@ -17,8 +17,11 @@
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Results](#results)
+- [Benchmarks](#benchmarks)
+- [Changelog](#changelog)
 - [Contributing](#contributing)
-- [License](#license)
+- [Powered Apps](#powered-apps)
+- [Support](#support)
 
 ## Introduction
 
@@ -166,9 +169,14 @@ to `true`).
 Additionally, based on the configuration, a folder with non-duplicate images may be created, and duplicate images may be
 deleted from the dataset.
 
+## Benchmarks
+
+In `benchmarks/scripts` different scripts to perform params optimization of UFOID and performance tests are provided. 
+For more details check dedicated [README](./benchmarks/README.md).
+
 ## Changelog
 
-See [changelog](./CHANGELOG.md).
+See [CHANGELOG](./CHANGELOG.md).
 
 ## Contributing
 We appreciate all contributions. If you are planning to contribute back bug-fixes, please do so without any further 
