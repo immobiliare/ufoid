@@ -3,7 +3,7 @@ tqdm==4.66.1
 numba==0.60.0
 numba_progress==1.1.0
 numpy<1.26
-Pillow==10.1.0
+Pillow==10.4.0
 omegaconf==2.3.0
 rich==13.6.0
 python-dotenv==1.0.0
