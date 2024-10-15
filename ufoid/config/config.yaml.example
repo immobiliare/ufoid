@@ -1,0 +1,14 @@
+num_processes: "max"  # Number of processes to use for parallel processing. "max" uses the maximum available CPU cores.
+chunk_length: 50000  # Number of images processed in each batch during duplicate detection. Longer values could result in memory errors. (see docs)
+new_paths: # List of paths containing new images for duplicate detection.
+  - "data/toy_data/imgs_onlyorig"
+old_paths: # List of paths containing old images for comparison with new images.
+  - "data/toy_data/imgs_someunique_somedupli"
+check_with_itself: true  # Enable duplicate detection within the new dataset (self-comparison).
+check_with_old_data: true  # Enable duplicate detection between the new and old datasets.
+csv_output: true  # Whether to save duplicate information to a CSV file.
+csv_output_file: "duplicates.csv"  # The filename for the CSV file to save duplicate information.
+delete_duplicates: false  # Whether to delete duplicate images.
+create_folder_with_no_duplicates: true  # Whether to create a folder with non-duplicate images.
+new_folder: "data/toy_data/temp"  # The path for the folder where non-duplicate images will be stored.
+distance_threshold: 30  # The threshold for considering images as duplicates based on their similarity.

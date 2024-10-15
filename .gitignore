@@ -1,3 +1,32 @@
+__pycache__/
+.idea/
+.pyc
+.run/
+.vscode/
+scratch/
+var/
+venv/
+docker/apps/
+**/.env
+
+# Created by https://www.toptal.com/developers/gitignore/api/jupyternotebooks,python
+# Edit at https://www.toptal.com/developers/gitignore?templates=jupyternotebooks,python
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+# website: http://jupyter.org/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Remove previous ipynb_checkpoints
+#   git rm -r .ipynb_checkpoints/
+
+### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -76,11 +105,8 @@ docs/_build/
 target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
 
 # IPython
-profile_default/
-ipython_config.py
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -106,10 +132,8 @@ ipython_config.py
 #pdm.lock
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
+#   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
-.pdm-python
-.pdm-build/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -160,3 +184,29 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
+
+# ruff
+.ruff_cache/
+
+# LSP config files
+pyrightconfig.json
+
+# End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks,python
+*/temp.py
+*.DS_Store
+benchmarks/images/
+data/toy_data/temp
+/benchmarks/ukbench/
+/data/ukbench/
+/data/image_dedup_benchmark/
+/data/quality_benchmark/
+/data/benchmark_speed_temp/
+ufoid/config/config.yaml
+/duplicates.csv
+data
+benchmarks/results
+benchmarks/config/*.yaml

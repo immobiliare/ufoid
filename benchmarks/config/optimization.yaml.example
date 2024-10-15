@@ -1,0 +1,23 @@
+GENERAL:
+  early_stop: True
+  # if active it breaks grid search when ufoid elapsed time starts to increase
+  # (tests are performed from the lowest to the highest num_processes and chunk_size)
+
+DATASETS:
+# a list of synthetic dataset on which the benchmark will be performed
+  - name: 30k-1%-duplicates
+    image_size: 300
+    image_numbers: 30000
+    duplicates_percentages: 0.01
+  - name: 30k-30%-duplicates
+    image_size: 300
+    image_numbers: 30000
+    duplicates_percentages: 0.3
+
+UFOID_PARAMS:
+  num_processes:
+    - 2
+    - 4
+  chunk_lengths:
+    - 10000
+    - 15000
