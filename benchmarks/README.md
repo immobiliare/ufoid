@@ -45,20 +45,25 @@ This table and the accompanying plots provide valuable insights into the perform
 - **Variability in Techniques**: There's variability in precision across different image manipulation techniques. The hardest duplicates to catch are the ones where brightness or contrast is increased (but not decreased) and the streched ones.
 
 In summary, this table and the associated plots demonstrate how precision in image deduplication can be optimized by adjusting the threshold value, with some image manipulation techniques being more amenable to detection. This information is valuable for users to make informed decisions about the threshold setting that best aligns with their application's precision and recall requirements.
-<div style="text-align:center">
-    <figure>
-        <img src="../.github/example_images/benchmark_stability_precision.png" alt="Image Description" width="75%">
-        <figcaption>Figure 1: stability Benchmark Precision</figcaption>
-    </figure>
-    <figure>
-        <img src="../.github/example_images/benchmark_stability_precision_zoom.png" alt="Image Description" width="75%">
-        <figcaption>Figure 2: stability Benchmark Precision Zoomed In</figcaption>
-    </figure>
-    <figure>
-        <img src="../.github/example_images/benchmark_stability_collisions.png" alt="Image Description" width="75%">
-        <figcaption>Figure 3: Stability Benchmark Collisions</figcaption>
-    </figure>
+
+<div align="center">
+    <img src="../.github/example_images/benchmark_stability_precision.png" alt="Stability Benchmark Precision" width="75%">
+    <br>
+    <sub>Figure 1: Stability Benchmark Precision</sub>
 </div>
+
+<div align="center">
+    <img src="../.github/example_images/benchmark_stability_precision_zoom.png" alt="Stability Benchmark Precision Zoomed In" width="75%">
+    <br>
+    <sub>Figure 2: Stability Benchmark Precision Zoomed In</sub>
+</div>
+
+<div align="center">
+    <img src="../.github/example_images/benchmark_stability_collisions.png" alt="Stability Benchmark Collisions" width="75%">
+    <br>
+    <sub>Figure 3: Stability Benchmark Collisions</sub>
+</div>
+
 
 # Optimization benchmark
 

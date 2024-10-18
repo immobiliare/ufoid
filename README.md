@@ -9,7 +9,7 @@
 > Ultra Fast Optimized Image Deduplication.
 
 ![Test](https://github.com/immobiliare/ufoid/actions/workflows/ci.yaml/badge.svg)
-![Python 3.9](https://img.shields.io/badge/Python-3.9,3.10,3.11-blue)
+![Python 3.9](https://img.shields.io/badge/Python-3.9|3.10|3.11-blue)
 
 ## Table of Contents
 
@@ -36,9 +36,11 @@ The project provides two main functionalities:
 2. Duplicate detection between two datasets using chunks: this method allows for comparison between a reference dataset
    and a new dataset to identify any overlapping duplicate images.
 
-## Installation
+Furthermore, the project is able to catch a subset of almost-duplicates (like images with brightness, contrast, or 
+dimension changes) in an efficient manner, without producing false positives 
+(more details can be found in benchmarks [README](./benchmarks/README.md).)
 
-In order to guarantee the proper operation of the application, the recommended python version is 3.9.2.
+## Installation
 
 ### Clone UFOID
 
@@ -93,7 +95,7 @@ This operation will:
 
 ## Configuration
 
-Copy `ufoid/config/config.yaml.example` and rename it as `config.yaml` allows you to customize various aspects of the 
+Clone `ufoid/config/config.yaml.example` and rename it as `config.yaml` allows you to customize various aspects of the 
 duplicate detection process.
 Here are some key parameters you can modify:
 
