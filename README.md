@@ -11,6 +11,11 @@
 ![Test](https://github.com/immobiliare/ufoid/actions/workflows/ci.yaml/badge.svg)
 ![Python 3.9](https://img.shields.io/badge/Python-3.9|3.10|3.11-blue)
 
+<div align="center">
+
+![Example](.github/example_images/ufoid.gif)
+</div>
+
 ## Table of Contents
 
 - [Introduction](#introduction)
