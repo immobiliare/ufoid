@@ -6,7 +6,7 @@ from rich.logging import RichHandler
 ROOT_PATH = Path(__file__).parent.parent
 LOG_LOCATION = "./var/log/app.log"
 LOG_LEVEL = logging.INFO
-LOG_FORMAT = "[%(asctime)s]" " %(message)s [%(pathname)s:%(lineno)d]"
+LOG_FORMAT = "[%(asctime)s]" " %(message)s" #[%(pathname)s:%(lineno)d]"
 
 
 class RelativePathFormatter(logging.Formatter):

@@ -32,7 +32,7 @@ def compute_hash(path, hash_size=16):
     return phash(Image.open(path), hash_size=hash_size).hash
 
 
-def parallel_paths_to_hashes(images: list[str], num_processes=cpu_count()-1):
+def parallel_paths_to_hashes(images: list[str], num_processes=cpu_count() - 1):
     """Computes the hashes of images in parallel.
 
     Args:
@@ -47,7 +47,8 @@ def parallel_paths_to_hashes(images: list[str], num_processes=cpu_count()-1):
     with ProcessPoolExecutor(max_workers=num_processes) as executor:
         # Compute hashes in parallel
         hashes_np = np.array(
-            list(tqdm(executor.map(compute_hash, images), total=len(images), colour="green"))
+            list(tqdm(executor.map(compute_hash, images), total=len(images), colour="green",
+                      desc=' ' * 35 + 'Hashing images', leave=False))
         )
 
     return hashes_np
@@ -172,13 +173,15 @@ def extract_duplicates_within_a_list_of_paths(images, hashes, distance_threshold
     """
 
     logger.info("Getting distance matrix")
-    with ProgressBar(total=len(hashes), colour="green") as progress:
+    with ProgressBar(total=len(hashes), colour="green", desc=' ' * 35 + 'Creating distance matrix',
+                     leave=False) as progress:
         distance_matrix = get_distance_matrix(
             images=hashes, targets=hashes, symmetric=True, progress_proxy=progress
         )
 
     logger.info("Searching for duplicates idxs")
-    with ProgressBar(total=len(hashes), colour="green") as progress:
+    with ProgressBar(total=len(hashes), colour="green", desc=' ' * 35 + 'Searching duplicates idxs',
+                     leave=False) as progress:
         duplicates_idxs = get_duplicates_idxs(
             distance_matrix,
             symmetric=True,
@@ -187,14 +190,15 @@ def extract_duplicates_within_a_list_of_paths(images, hashes, distance_threshold
         )
     logger.info("Finding duplicates couples by matching indexes with images lists")
     duplicates = [
-        (images[i], images[j], diff) for i, j, diff in tqdm(duplicates_idxs, colour="GREEN")
+        (images[i], images[j], diff) for i, j, diff in
+        tqdm(duplicates_idxs, colour="GREEN", desc=' ' * 35 + 'Finding duplicates', leave=False)
     ]
 
     return duplicates
 
 
 def extract_duplicates_between_two_lists_of_paths(
-    images_1, images_2, hashes_1, hashes_2, distance_threshold=11
+        images_1, images_2, hashes_1, hashes_2, distance_threshold=11
 ):
     """Extracts duplicates between two lists of image paths.
 
@@ -214,13 +218,15 @@ def extract_duplicates_between_two_lists_of_paths(
     """
 
     logger.info("Getting distance matrix")
-    with ProgressBar(total=len(hashes_1), colour="green") as progress:
+    with ProgressBar(total=len(hashes_1), colour="green", desc=' ' * 35 + 'Creating distance matrix',
+                     leave=False) as progress:
         distance_matrix = get_distance_matrix(
             images=hashes_1, targets=hashes_2, symmetric=False, progress_proxy=progress
         )
 
     logger.info("Searching for duplicates idxs")
-    with ProgressBar(total=len(hashes_1), colour="green") as progress:
+    with ProgressBar(total=len(hashes_1), colour="green", desc=' ' * 35 + 'Searching duplicates idxs',
+                     leave=False) as progress:
         duplicates_idxs = get_duplicates_idxs(
             distance_matrix,
             symmetric=False,
@@ -229,7 +235,8 @@ def extract_duplicates_between_two_lists_of_paths(
         )
     logger.info("Finding duplicates couples by matching indexes with images lists")
     duplicates = [
-        (images_1[i], images_2[j], diff) for i, j, diff in tqdm(duplicates_idxs, colour="GREEN")
+        (images_1[i], images_2[j], diff) for i, j, diff in
+        tqdm(duplicates_idxs, colour="GREEN", desc=' ' * 35 + 'Finding duplicates', leave=False)
     ]
 
     return duplicates
@@ -249,7 +256,7 @@ def divide_in_chunks(input_list, chunk_length):
         yield input_list[i: i + chunk_length]
 
 
-def extract_duplicates_within_a_dataset_no_chunk(images, num_processes=cpu_count()-1, distance_threshold=11):
+def extract_duplicates_within_a_dataset_no_chunk(images, num_processes=cpu_count() - 1, distance_threshold=11):
     """Extracts duplicates within a dataset without using chunks.
 
     Args:
@@ -276,7 +283,7 @@ def extract_duplicates_within_a_dataset_no_chunk(images, num_processes=cpu_count
 
 
 def extract_duplicates_within_a_dataset_with_chunks(
-    images, chunk_length=50000, num_processes=cpu_count()-1, distance_threshold=11
+        images, chunk_length=50000, num_processes=cpu_count() - 1, distance_threshold=11
 ):
     """Extracts duplicates within a dataset using chunks.
 
@@ -333,7 +340,7 @@ def extract_duplicates_within_a_dataset_with_chunks(
 
 
 def extract_duplicates_within_a_dataset(
-    paths, chunk_length=50000, num_processes=cpu_count()-1, distance_threshold=11, logger_level=logging.INFO
+        paths, chunk_length=50000, num_processes=cpu_count() - 1, distance_threshold=11, logger_level=logging.INFO
 ):
     """Extracts duplicates within a dataset and automatically chooses whether to chunk based on
     dataset size.
@@ -367,7 +374,7 @@ def extract_duplicates_within_a_dataset(
 
 
 def extract_duplicates_between_two_datasets_no_chunk(
-    images_ref, images_new, num_processes=cpu_count()-1, distance_threshold=11, hashes_new=None
+        images_ref, images_new, num_processes=cpu_count() - 1, distance_threshold=11, hashes_new=None
 ):
     """Extract duplicates between two datasets without using chunks.
 
@@ -407,7 +414,7 @@ def extract_duplicates_between_two_datasets_no_chunk(
 
 
 def extract_duplicates_between_two_datasets_with_chunks(
-    images_reference, images_new, chunk_length=50000, num_processes=cpu_count()-1, distance_threshold=11
+        images_reference, images_new, chunk_length=50000, num_processes=cpu_count() - 1, distance_threshold=11
 ):
     """Extracts duplicates between two datasets using chunks.
 
@@ -457,13 +464,13 @@ def extract_duplicates_between_two_datasets_with_chunks(
 
 
 def extract_duplicates_between_two_datasets(
-    paths_reference,
-    paths_new,
-    chunk_length=50000,
-    num_processes=cpu_count()-1,
-    distance_threshold=11,
-    logger_level=logging.INFO,
-    hashes_new=None,
+        paths_reference,
+        paths_new,
+        chunk_length=50000,
+        num_processes=cpu_count() - 1,
+        distance_threshold=11,
+        logger_level=logging.INFO,
+        hashes_new=None,
 ):
     """Extract duplicates between two datasets and automatically chooses whether to chunk based on
     dataset sizes.
