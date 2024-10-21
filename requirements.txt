@@ -2,7 +2,7 @@ imagehash==4.3.1
 tqdm==4.66.5
 numba==0.60.0
 numba_progress==1.1.0
-numpy==2.0.2
+numpy==2.1.2
 Pillow==10.4.0
 omegaconf==2.3.0
 rich==13.9.2
