@@ -41,9 +41,12 @@ The project provides two main functionalities:
 2. Duplicate detection between two datasets using chunks: this method allows for comparison between a reference dataset
    and a new dataset to identify any overlapping duplicate images.
 
-Furthermore, the project is able to catch a subset of almost-duplicates (like images with brightness, contrast, or 
-dimension changes) in an efficient manner, without producing false positives 
-(more details can be found in benchmarks [README](./benchmarks/README.md).)
+The competitor [imagededup](https://github.com/idealo/imagededup) library, running on hash_sizes of 8 bit, demonstrates
+fast degradation of accuracy when increasing threshold, and shows heavy degradation of computation time when duplicates
+increase for false positives. In contrast, our library, shows consistent results over higher threshold (and this can be
+important to detect near-duplicates as shown in the accuracy benchmark). Furthermore, despite running on 16-bit hashes,
+the strong computation optimization allow our library to be faster in a consistent way (more than double speed on 100k datasets).
+More details can be found in benchmarks [README](./benchmarks/README.md).
 
 ## Installation
 
@@ -56,7 +59,7 @@ cd ufoid
 
 ### Create virtualenv and install requirements
 
-In order to create a clean environment for the execution of the application, a new virtualenv should be created 
+In order to create a clean environment for the execution of the application, a new virtualenv should be created
 inside the current folder, using the command
 
 ```console
@@ -97,10 +100,9 @@ This operation will:
 - install the requirements;
 - install the git hook.
 
-
 ## Configuration
 
-Clone `ufoid/config/config.yaml.example` and rename it as `config.yaml` allows you to customize various aspects of the 
+Clone `ufoid/config/config.yaml.example` and rename it as `config.yaml` allows you to customize various aspects of the
 duplicate detection process.
 Here are some key parameters you can modify:
 
@@ -178,7 +180,7 @@ deleted from the dataset.
 
 ## Benchmarks
 
-In `benchmarks/scripts` different scripts to perform params optimization of UFOID and performance tests are provided. 
+In `benchmarks/scripts` different scripts to perform params optimization of UFOID and performance tests are provided.
 For more details check dedicated [README](./benchmarks/README.md).
 
 ## Changelog
@@ -186,27 +188,28 @@ For more details check dedicated [README](./benchmarks/README.md).
 See [CHANGELOG](./CHANGELOG.md).
 
 ## Contributing
-We appreciate all contributions. If you are planning to contribute back bug-fixes, please do so without any further 
+
+We appreciate all contributions. If you are planning to contribute back bug-fixes, please do so without any further
 discussion.
 
-If you plan to contribute new features, utility functions, or extensions to the core, please first open an issue and 
+If you plan to contribute new features, utility functions, or extensions to the core, please first open an issue and
 discuss the feature with us.
-Sending a PR without discussion might end up resulting in a rejected PR because we might be taking the core in a 
+Sending a PR without discussion might end up resulting in a rejected PR because we might be taking the core in a
 different direction than you might be aware of.
 
 To learn more about making a contribution, please see our [Contribution page](./CONTRIBUTING.md).
 
 ## Powered apps
 
-UFOID was created by ImmobiliareLabs, the technology department of [Immobiliare.it](https://www.immobiliare.it), 
+UFOID was created by ImmobiliareLabs, the technology department of [Immobiliare.it](https://www.immobiliare.it),
 the #1 real estate company in Italy.
 
 **If you are using UFOID [drop us a message](mailto:opensource@immobiliare.it)**.
 
 ## Support
 
-Made with ❤️ by [ImmobiliareLabs](https://github.com/immobiliare) and all the 
-[contributors](./CONTRIBUTING.md#contributors)
+Made with ❤️ by [ImmobiliareLabs](https://github.com/immobiliare) and all the
+[contributors](./CONTRIBUTING.md#contributors).
 
-If you have any question on how to use UFOID, bugs and enhancement please feel free to reach us out by opening a 
+If you have any question on how to use UFOID, bugs and enhancement please feel free to reach us out by opening a
 [GitHub Issue](https://github.com/immobiliare/ufoid/issues).
