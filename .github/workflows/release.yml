@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Conventional Changelog Action
+      - name: Generate changelog and determine version
         id: changelog
         uses: TriPSs/conventional-changelog-action@v5
         with:
@@ -25,7 +25,8 @@ jobs:
           output-file: 'CHANGELOG.md'
           release-count: 10000
           skip-on-empty: false
-          skip-version-file: true
+          version-file: 'pyproject.toml'
+          version-path: 'project.version'
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
