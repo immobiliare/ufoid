@@ -1,2 +1,0 @@
-imagededup==0.3.2
-wget==3.2

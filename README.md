@@ -57,48 +57,55 @@ git clone https://github.com/immobiliare/ufoid
 cd ufoid
 ```
 
+Here’s a minimal installation guide based on your specified style:
+
+## Installation
+
+### Clone Project Repository
+
+```shell
+git clone https://github.com/your-username/your-project
+cd your-project
+```
+
 ### Create virtualenv and install requirements
 
-In order to create a clean environment for the execution of the application, a new virtualenv should be created
-inside the current folder, using the command
+In order to create a clean environment for the execution of the application, a new virtualenv should be created inside the current folder.
+
+#### If using `uv`
 
 ```console
-python3 -m venv venv
+uv venv
 ```
 
-A new folder named `venv` will be created in `.`
-
-In order to activate the virtualenv, execute
+#### If using plain Python
 
 ```console
-source venv/bin/activate
+python -m venv venv
+source venv/bin/activate 
 ```
 
-and install python requirements executing
+### Install project dependencies
+
+Once the virtual environment is activated, install the project dependencies specified in the `.toml` file:
 
 ```console
-pip install -r requirements.txt
+pip install .
 ```
 
-if you are interested in running the benchmarks and/or the tests execute also
+Your environment is now ready to run the project.
+
+### Run tests
 
 ```console
-pip install -r requirements-benchmark.txt
-pip install -r requirements-test.txt
+uv run pytest
 ```
 
-A different approach consists in using the Makefile by running from the project root the command
+or
 
 ```console
-make
+python -m pytest 
 ```
-
-This operation will:
-
-- create the venv;
-- update pip to the latest version;
-- install the requirements;
-- install the git hook.
 
 ## Configuration
 
