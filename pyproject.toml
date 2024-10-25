@@ -1,0 +1,28 @@
+[project]
+name = "ufoid"
+version = "0.1.1"
+description = "Ultra Fast Optimized Image Deduplication"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "imagehash>=4.3.1",
+    "matplotlib>=3.9.2",
+    "numba>=0.60.0",
+    "numba-progress>=1.1.0",
+    "numpy>=2.0.2",
+    "omegaconf>=2.3.0",
+    "pandas>=2.2.3",
+    "pillow>=11.0.0",
+    "python-dotenv>=1.0.1",
+    "rich>=13.9.2",
+    "tqdm>=4.66.5",
+    "wget>=3.2",
+    "imagededup>=0.3.2",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.3",
+    "pytest-cov>=5.0.0",
+    "pytest-mock>=3.14.0",
+]
