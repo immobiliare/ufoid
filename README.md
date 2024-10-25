@@ -63,42 +63,34 @@ In order to create a clean environment for the execution of the application, a n
 inside the current folder, using the command
 
 ```console
-python3 -m venv venv
+uv venv
 ```
-
-A new folder named `venv` will be created in `.`
 
 In order to activate the virtualenv, execute
 
 ```console
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 and install python requirements executing
 
 ```console
-pip install -r requirements.txt
+uv sync
 ```
 
-if you are interested in running the benchmarks and/or the tests execute also
+if you are interested in running the tests
 
 ```console
-pip install -r requirements-benchmark.txt
-pip install -r requirements-test.txt
+uvx pytest
 ```
 
-A different approach consists in using the Makefile by running from the project root the command
+if you need to run benchmarks 
 
 ```console
-make
+uv add imagededup wget
 ```
 
-This operation will:
-
-- create the venv;
-- update pip to the latest version;
-- install the requirements;
-- install the git hook.
+Then you should run
 
 ## Configuration
 
