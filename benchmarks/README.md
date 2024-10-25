@@ -97,7 +97,20 @@ The results are saved to a CSV file for analysis.
 
 ### How to Use the Script
 
-#### 1. Write the Configuration File
+#### 1. Install dependencies
+
+```console
+uv add imagededup==0.3.2 wget==3.2.0
+```
+
+or
+
+```console
+pip install imagededup==0.3.2 wget==3.2.0
+```
+
+
+#### 2. Write the Configuration File
 
 The configuration file (`optimization.yaml`) is written in YAML format and defines the parameters for the benchmarking 
 tests. You find an example in `benchmarks/scripts/config/optimization.yaml.example`.
