@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "imagehash==4.3.1",
-    "matplotlib==3.9.2",
+    "matplotlib==3.9.4",
     "numba==0.60.0",
     "numba-progress==1.1.0",
     "numpy==2.0.2",
