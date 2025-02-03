@@ -5,7 +5,7 @@ description = "Ultra Fast Optimized Image Deduplication"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "imagehash==4.3.1",
+    "imagehash==4.3.2",
     "matplotlib==3.9.2",
     "numba==0.60.0",
     "numba-progress==1.1.0",
