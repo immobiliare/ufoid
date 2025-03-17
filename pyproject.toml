@@ -9,7 +9,7 @@ dependencies = [
     "matplotlib==3.9.2",
     "numba==0.60.0",
     "numba-progress==1.1.0",
-    "numpy==2.0.2",
+    "numpy==2.2.4",
     "omegaconf==2.3.0",
     "pandas==2.2.3",
     "pillow==11.0.0",
